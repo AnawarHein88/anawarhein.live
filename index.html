@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="my" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura - Totally Free Live Football & Replays</title>
+    
+    <meta name="description" content="Aura App - Watch live football matches and full match replays from EPL, LaLiga, UCL and more on your Android phone and TV. 100% Free.">
+    <meta name="keywords" content="free live football, football replay, EPL, LaLiga, UCL, android football app, aura app">
+    <meta name="theme-color" content="#121212">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* CSS Reset & Basic Setup */
+        :root {
+            --primary-color: #00f2c3;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: -30px auto 40px auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 242, 195, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 242, 195, 0.4);
+            color: #000;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #00f2c3, #00c9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 80px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            margin-left: 20px;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: var(--card-bg);
+            z-index: 999;
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: left 0.4s ease;
+        }
+        
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav a {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            padding: 15px 30px;
+        }
+        
+        .mobile-nav a:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+        
+        /* Hero Section */
+        #hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-promises {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .hero-promises span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-promises .fa-check-circle {
+            color: var(--primary-color);
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            border-radius: 20px;
+        }
+
+        /* Leagues Section */
+        #leagues {
+            background-color: var(--dark-bg);
+            padding: 60px 0;
+        }
+        .leagues-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .leagues-logos img {
+            height: 50px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .leagues-logos img:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .invert-color {
+            filter: invert(1);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .feature-item {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 242, 195, 0.1);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .feature-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Support Section */
+        #support {
+            background-color: var(--card-bg);
+        }
+        .payment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .payment-card {
+            background: var(--dark-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .payment-logo {
+            height: 50px;
+            margin: 0 auto 20px auto;
+            object-fit: contain;
+        }
+        .payment-name {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .payment-number-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .payment-number {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-right: 15px;
+        }
+        .btn-copy {
+            background: var(--primary-color);
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-copy:hover {
+            background-color: #fff;
+        }
+        
+        /* Download Section */
+        #download {
+            text-align: center;
+        }
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .download-buttons .btn {
+            font-size: 1.1rem;
+            padding: 15px 35px;
+        }
+        .download-buttons .btn i {
+            margin-right: 10px;
+        }
+
+        /* FAQ Section */
+        #faq {
+            background-color: var(--card-bg);
+        }
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 20px 0;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        .faq-answer p {
+            padding-bottom: 20px;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px; /* Adjust if needed */
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(45deg);
+        }
+        
+        /* Disclaimer Section */
+        .disclaimer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-color);
+        }
+        .disclaimer-content p {
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+        }
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-info, .footer-links, .social-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .social-links a {
+            font-size: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2.section-title { font-size: 2rem; }
+            section { padding: 60px 0; }
+
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text {
+                order: 2;
+            }
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-promises {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <img src="assets/images/aura-logo.png" alt="Aura Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#support">Support Us</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#download" class="btn btn-primary nav-btn">Download</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="mobile-nav">
+        <a href="#features">Features</a>
+        <a href="#support">Support Us</a>
+        <a href="#faq">FAQ</a>
+        <a href="#download">Download</a>
+    </div>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1 class="gradient-text">သင့်လက်ထဲက အိတ်ဆောင်ဘောလုံးကွင်း</h1>
+                    <p>ကြော်ငြာမရှိ၊ လစဉ်ကြေးမရှိ၊ အကန့်အသတ်မရှိ။ Aura App ဖြင့် ဘောလုံးပွဲစဉ်အားလုံးကို သင့်ရဲ့ Android Device များပေါ်တွင် လုံးဝအခမဲ့ ကြည့်ရှုလိုက်ပါ။</p>
+                    <div class="hero-promises">
+                        <span><i class="fas fa-check-circle"></i> Live Matches</span>
+                        <span><i class="fas fa-check-circle"></i> Full Replays</span>
+                        <span><i class="fas fa-check-circle"></i> 100% Free</span>
+                    </div>
+                    <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> နောက်ဆုံးဗားရှင်း ရယူရန်</a>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/images/hero-image.png" alt="Aura App on TV, Tablet and Phone">
+                </div>
+            </div>
+        </section>
+
+        <section id="leagues" class="leagues-section">
+            <div class="container">
+                <h3 class="section-subtitle" style="text-align:center; margin-bottom: 30px; font-weight:600; font-size: 1.2rem;">Featuring Top Leagues & Competitions Worldwide</h3>
+                <div class="leagues-logos">
+                    <img src="assets/images/premier-league.png" alt="Premier League Logo" title="Premier League">
+                    <img src="assets/images/laliga.png" alt="LaLiga Logo" title="LaLiga">
+                    <img src="assets/images/serie-a.png" alt="Serie A Logo" title="Serie A">
+                    <img src="assets/images/bundesliga.png" alt="Bundesliga Logo" title="Bundesliga" class="invert-color">
+                    <img src="assets/images/ligue-1.png" alt="Ligue 1 Logo" title="Ligue 1" class="invert-color">
+                    <img src="assets/images/champions-league.png" alt="Champions League Logo" title="Champions League">
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Aura ရဲ့ အစွမ်းဆောင်နိုင်မှုများ</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-satellite-dish feature-icon"></i>
+                        <h4>တိုက်ရိုက်ထုတ်လွှင့်မှု</h4>
+                        <p>ဥရောပထိပ်သီးလိဂ်များနဲ့ အခြားစိတ်ဝင်စားဖွယ် ပွဲစဉ်များကို လက်လွတ်မခံဘဲ အချိန်နှင့်တပြေးညီ ကြည့်ရှုနိုင်ခြင်း။</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock-rotate-left feature-icon"></i>
+                        <h4>ပွဲစဉ်ပြန်လည်ကြည့်ရှုခြင်း</h4>
+                        <p>လွဲချော်သွားတဲ့ ပွဲစဉ်တွေနဲ့ အမှတ်တရပွဲကောင်းတွေကို အစအဆုံး အရည်အသွေးကောင်းကောင်းဖြင့် ပြန်လည်ကြည့်ရှုနိုင်ခြင်း။</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-tv feature-icon"></i>
+                        <h4>Device စုံလင်မှု</h4>
+                        <p>သင့် Android Phone, Tablet သာမက TV Screen အကြီးများပေါ်တွင်ပါ အကောင်းဆုံး ကြည့်ရှုခံစားနိုင်အောင် ဒီဇိုင်းပြုလုပ်ထားခြင်း။</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-bolt feature-icon"></i>
+                        <h4>အခမဲ့နှင့် ကြော်ငြာမဲ့</h4>
+                        <p>လစဉ်ကြေးပေးရန်မလို၊ စိတ်အနှောင့်အယှက်ဖြစ်စရာ ကြော်ငြာများမရှိဘဲ ဘောလုံးပွဲများ၏ အရသာကို အပြည့်အဝခံစားလိုက်ပါ။</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="support-section">
+            <div class="container">
+                <h2 class="section-title">ကျွန်ုပ်တို့ရဲ့ ကြိုးပမ်းမှုကို အားပေးပါ</h2>
+                <p class="section-subtitle">Aura App ကို အမြဲတမ်း အခမဲ့နှင့် ကြော်ငြာမရှိဘဲ ဝန်ဆောင်မှုပေးနိုင်ရန် Server နှင့် Maintenance ကုန်ကျစရိတ်များအတွက် သင်၏ မေတ္တာဖြင့် ကော်ဖီတစ်ခွက် ဝယ်တိုက်ပြီး ကူညီပံ့ပိုးနိုင်ပါတယ်</p>
+                <div class="payment-grid">
+                    <div class="payment-card">
+                        <img src="assets/images/kbz-pay.png" alt="KBZ Pay Logo" class="payment-logo">
+                        <p class="payment-name">Name: Not yet</p>
+                        <div class="payment-number-wrapper">
+                            <span class="payment-number">09</span>
+                            <button class="btn-copy" data-clipboard-text="09">
+                                <i class="far fa-copy"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="payment-card">
+                        <img src="assets/images/wave-pay.png" alt="Wave Pay Logo" class="payment-logo">
+                        <p class="payment-name">Name: Not yet</p>
+                        <div class="payment-number-wrapper">
+                            <span class="payment-number">09</span>
+                            <button class="btn-copy" data-clipboard-text="09">
+                                <i class="far fa-copy"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="download-section">
+            <div class="container">
+                <h2 class="section-title">Aura App ကို အခုပဲရယူပါ</h2>
+                <p class="section-subtitle">သင့် Android Phone, Tablet, နှင့် TV/Box အားလုံးအတွက်</p>
+                <div class="download-buttons">
+                    <a href="https://api.nintendoi.xyz/api/p-stream/2e65500c-1e29-412b-bd5e-75520b8b0029/app-release.apk" class="btn btn-primary"><i class="fab fa-android"></i> Download for Mobile/Tablet</a>
+                    <a href="https://api.nintendoi.xyz/api/p-stream/2e65500c-1e29-412b-bd5e-75520b8b0029/app-release.apk" class="btn btn-primary"><i class="fas fa-tv"></i> Download for TV/Box</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section">
+               <div class="container">
+                <h2 class="section-title">အမေးများသော မေးခွန်းများ</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>ဘာကြောင့် Aura App က အခမဲ့ဖြစ်နေတာလဲ။</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>ကျွန်ုပ်တို့၏ ရည်မှန်းချက်မှာ ဘောလုံးဝါသနာအိုးတိုင်းကို ငွေကြေးအကန့်အသတ်မရှိ ပွဲစဉ်ကောင်းများ ကြည့်ရှုနိုင်စေရန်ဖြစ်ပါတယ်။ App ကို ရေရှည်လည်ပတ်နိုင်ရန်အတွက် သုံးစွဲသူများ၏ မေတ္တာဖြင့် ကူညီပံ့ပိုးမှု (Donation) ကိုသာ အဓိကထား ရပ်တည်သွားမှာ ဖြစ်ပါတယ်။</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>ဘယ်လို ကူညီပံ့ပိုး (Donate) နိုင်မလဲ။</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Website ပေါ်ရှိ "Support Us" Section တွင် ဖော်ပြထားသော KBZ Pay/Wave Pay အကောင့်များမှတစ်ဆင့် သင်နှစ်သက်သလောက် ပမာဏကို လွယ်ကူစွာ ပံ့ပိုးကူညီနိုင်ပါတယ်။ သင်တို့ရဲ့ အားပေးမှုတိုင်းအတွက် အထူးကျေးဇူးတင်ရှိပါတယ်။</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>ဘယ်လို Device တွေမှာ သုံးလို့ရလဲ။</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Android Version 5.0 နှင့်အထက်ရှိသော မည်သည့် Android Phone, Tablet တွင်မဆို အသုံးပြုနိုင်ပါတယ်။ ထို့အပြင် Mi Box, Mi TV Stick, Nvidia Shield နှင့် အခြား Android TV/Box အများစုတွင်လည်း အဆင်ပြေပြေ အသုံးပြုနိုင်ပါတယ်။</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="disclaimer" class="disclaimer-section">
+            <div class="container">
+                <h2 class="section-title">သတိပြုရန်နှင့် မသက်ဆိုင်ကြောင်းရှင်းလင်းချက်</h2>
+                <div class="disclaimer-content">
+                    <p>Aura App သည် မည်သည့် video content ကိုမှ ကိုယ်တိုင် host လုပ်ထားခြင်း သို့မဟုတ် သိမ်းဆည်းထားခြင်း မရှိပါ။ ကျွန်ုပ်တို့သည် အင်တာနက်ပေါ်တွင် အလွယ်တကူရှာဖွေတွေ့ရှိနိုင်သော third-party website များမှ streaming link များကိုသာ User များ အဆင်ပြေစေရန် စုစည်းဖော်ပြပေးခြင်းဖြစ်ပါသည်။</p>
+                    <p>Content များ၏ အရည်အသွေး၊ တရားဝင်မှု နှင့် မူပိုင်ခွင့်ဆိုင်ရာ ကိစ္စရပ်အားလုံးသည် သက်ဆိုင်ရာ third-party ဝန်ဆောင်မှုပေးသူများ၏ တာဝန်သာဖြစ်ပါသည်။ App အသုံးပြုရာတွင် ဖြစ်ပေါ်လာနိုင်သော မူပိုင်ခွင့်ဆိုင်ရာ ပြဿနာများကို ကျွန်ုပ်တို့မှ တာဝန်ယူမည်မဟုတ်ပါ။</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <p>&copy; 2025 Aura. All Rights Reserved.</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const mobileNav = document.querySelector('.mobile-nav');
+            hamburger.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            
+            // Close mobile nav when a link is clicked
+            document.querySelectorAll('.mobile-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                     const icon = hamburger.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other active items
+                    const currentlyActive = document.querySelector('.faq-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Copy to Clipboard
+            const copyButtons = document.querySelectorAll('.btn-copy');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const textToCopy = button.getAttribute('data-clipboard-text');
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalText = button.querySelector('span').textContent;
+                        button.querySelector('span').textContent = 'Copied!';
+                        button.querySelector('i').classList.remove('fa-copy');
+                        button.querySelector('i').classList.add('fa-check');
+                        
+                        setTimeout(() => {
+                            button.querySelector('span').textContent = originalText;
+                            button.querySelector('i').classList.remove('fa-check');
+                            button.querySelector('i').classList.add('fa-copy');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
