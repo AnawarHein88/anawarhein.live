@@ -1,0 +1,7 @@
+#EXTM3U
+
+#EXTINF:-1 tvg-name="News 1" tvg-logo="https://site.com/news1.png" group-title="News",News 1
+https://stream.com/news1.m3u8
+
+#EXTINF:-1 tvg-name="Sports 1" tvg-logo="https://site.com/sports.png" group-title="Sports",Sports 1
+https://stream.com/sports.m3u8
