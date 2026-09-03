@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#050505">
+  <title>အားကစား Live • ANAWAR HEIN Football</title><script src="access-config.js?v=12"></script><script src="guard.js?v=11"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="player.css"><link rel="stylesheet" href="sports.css"><link rel="stylesheet" href="fa-polish.css?v=15">
+<link rel="stylesheet" href="universe.css?v=1"></head>
+<body>
+  <main class="sports-app">
+    <header class="sports-top"><a class="icon-button" href="index.html"><i class="fa-solid fa-chevron-left"></i></a><div><small>ANAWAR HEIN LIVE</small><h1>အားကစား Live</h1></div><button class="icon-button" id="addGame"><i class="fa-solid fa-plus"></i></button></header>
+    <section class="sports-hero"><div><span>LIVE SPORTS CENTER</span><h2>ပွဲတိုင်းကို<br>တစ်နေရာတည်းမှာ</h2><p>သင်ကြိုက်နှစ်သက်သည့် အားကစားပွဲများ</p></div><b><i class="fa-solid fa-trophy"></i></b></section>
+    <section class="sports-player" id="sportsPlayer"><div class="sports-screen"><video id="gameVideo" controls playsinline autoplay></video><div class="game-placeholder" id="gamePlaceholder"><span><i class="fa-solid fa-play"></i></span><b>ကြည့်လိုသည့်ပွဲကို ရွေးပါ</b><small>အောက်က game card ကိုနှိပ်ပြီး ကြည့်ရှုနိုင်ပါတယ်</small></div><div class="game-loader" id="gameLoader">Live stream ချိတ်ဆက်နေပါသည်…</div></div><div class="playing-info"><div><i></i><span>LIVE</span></div><section><b id="playingTitle">အားကစား Live</b><small id="playingMeta">Game တစ်ခုရွေးပါ</small></section><button class="icon-button" id="gameFullscreen"><i class="fa-solid fa-expand"></i></button></div></section>
+    <div class="sports-tools"><label><span><i class="fa-solid fa-magnifying-glass"></i></span><input id="gameSearch" type="search" placeholder="ပွဲ သို့မဟုတ် အသင်းရှာရန်…"></label><div class="sport-filters" id="sportFilters"></div></div>
+    <div class="games-heading"><div><h2>Live ပွဲစဉ်များ</h2><small id="gameCount">0 games</small></div><span><i></i> LIVE NOW</span></div>
+    <section class="games-grid" id="gamesGrid"></section>
+  </main>
+
+  <nav class="bottom"><a class="nav nav-link" href="index.html"><i class="fa-solid fa-futbol"></i>ဘောလုံး</a><a class="nav nav-link" href="scores.html"><i class="fa-solid fa-chart-simple"></i>ရလဒ်</a><a class="nav nav-link" href="tv.html"><i class="fa-solid fa-tv"></i>TV</a><a class="nav nav-link active" href="sports.html"><i class="fa-solid fa-trophy"></i>အားကစား</a><a class="nav nav-link" href="news.html"><i class="fa-regular fa-newspaper"></i>သတင်း</a><a class="nav nav-link" href="settings.html"><i class="fa-solid fa-gear"></i>ဆက်တင်</a></nav>
+
+  <div class="game-modal" id="gameModal"><form id="gameForm"><div class="game-form-head"><div><small>MANUAL GAME</small><h3>အားကစားပွဲ ထည့်ရန်</h3></div><button type="button" id="closeGameForm" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div><label>ပွဲအမည်<input id="gameName" required placeholder="ဥပမာ — NBA Finals Game 1"></label><div class="form-double"><label>အသင်း (၁)<input id="teamOne" required placeholder="Lakers"></label><label>အသင်း (၂)<input id="teamTwo" required placeholder="Celtics"></label></div><label>Stream URL<input id="gameUrl" type="url" required placeholder="https://example.com/live.m3u8"></label><label>ပွဲပုံ URL<input id="gameImage" type="url" placeholder="https://example.com/banner.jpg"></label><div class="form-double"><label>အားကစားအမျိုးအစား<select id="gameSport"><option>ဘတ်စကက်ဘော</option><option>ဘော်လီဘော</option><option>တင်းနစ်</option><option>မွေထိုင်း</option><option>ဘက်ဒမင်တန်</option><option>အခြား</option></select></label><label>ပွဲချိန်<input id="gameTime" placeholder="ယနေ့ 8:00 PM"></label></div><button class="game-save" type="submit">ပွဲစဉ် သိမ်းမည်</button></form></div>
+  <div class="toast" id="toast"></div><script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js"></script><script>document.write('<script src="https://www.aryone.live/games.js?v='+Date.now()+'"><\/script>')</script><script>window.ANAWARHEIN_DEFAULT_GAMES=window.ARYONE_DEFAULT_GAMES||[];</script><script src="sports.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#050505">
+  <title>Football Scores • ANAWAR HEIN Football</title><script src="access-config.js?v=12"></script><script src="guard.js?v=11"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="player.css"><link rel="stylesheet" href="scores.css"><link rel="stylesheet" href="fa-polish.css?v=15">
+<link rel="stylesheet" href="universe.css?v=1"></head>
+<body>
+  <main class="scores-app">
+    <header class="scores-top"><a class="icon-button" href="index.html"><i class="fa-solid fa-chevron-left"></i></a><div><small>ANAWAR HEIN FOOTBALL</small><h1>ရလဒ်များ</h1></div><button class="icon-button" id="scoreRefresh"><i class="fa-solid fa-rotate-right"></i></button></header>
+    <section class="score-hero"><div><span>LIVE SCORE CENTER</span><h2>Every goal.<br>Every match.</h2><p>ကမ္ဘာတစ်ဝန်း ဘောလုံးပွဲစဉ်ရလဒ်များ</p></div><b><i class="fa-regular fa-futbol"></i></b></section>
+    <div class="date-nav"><button class="icon-button" id="prevDate"><i class="fa-solid fa-chevron-left"></i></button><label><small id="dateLabel">TODAY</small><input id="scoreDate" type="date"></label><button class="icon-button" id="nextDate"><i class="fa-solid fa-chevron-right"></i></button></div>
+    <nav class="score-tabs"><button class="active" data-status="all">All</button><button data-status="live"><i></i> Live</button><button data-status="finished">Finished</button><button data-status="upcoming">Upcoming</button></nav>
+    <div class="score-summary"><div><h2>Matches</h2><small id="scoreUpdated">ရလဒ်များ ရယူနေပါသည်…</small></div><strong id="scoreCount">0</strong></div>
+    <section id="scoreList" class="score-list"><div class="score-skeleton"></div><div class="score-skeleton"></div><div class="score-skeleton"></div></section>
+  </main>
+  <nav class="bottom"><a class="nav nav-link" href="index.html"><i class="fa-solid fa-futbol"></i>ဘောလုံး</a><a class="nav nav-link active" href="scores.html"><i class="fa-solid fa-chart-simple"></i>ရလဒ်</a><a class="nav nav-link" href="tv.html"><i class="fa-solid fa-tv"></i>TV</a><a class="nav nav-link" href="sports.html"><i class="fa-solid fa-trophy"></i>အားကစား</a><a class="nav nav-link" href="news.html"><i class="fa-regular fa-newspaper"></i>သတင်း</a><a class="nav nav-link" href="settings.html"><i class="fa-solid fa-gear"></i>ဆက်တင်</a></nav>
+  <div class="toast" id="toast"></div><script src="scores.js?v=21"></script>
+</body>
+</html>

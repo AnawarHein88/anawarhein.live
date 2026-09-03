@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>Login • ANAWAR HEIN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="access.css">
+  <link rel="stylesheet" href="fa-polish.css?v=15">
+  <script src="access-config.js?v=12"></script>
+  <link rel="stylesheet" href="universe.css?v=1">
+</head>
+<body>
+  <main class="access-page">
+    <section class="access-card">
+      <div class="logo"><b>ANAWAR HEIN</b> FOOTBALL</div>
+      <div class="ball"><i class="fa-regular fa-futbol"></i></div>
+      <span class="tag">MEMBER ACCESS</span>
+      <h1>ကြိုဆိုပါတယ်</h1>
+      <p>Website သို့ဝင်ရန် ဂဏန်း 8 လုံး access code ကိုထည့်ပါ။</p>
+      <form id="loginForm">
+        <label>8-DIGIT ACCESS CODE</label>
+        <div class="code">
+          <input id="accessCode" type="text" inputmode="numeric" autocomplete="one-time-code" minlength="8" maxlength="8" pattern="[0-9]{8}" required placeholder="12345678">
+          <button type="button" id="pasteCode">Paste</button>
+        </div>
+        <div id="loginError"></div>
+        <button class="login" type="submit">ဝင်ရောက်မည် <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+      <footer><i class="fa-solid fa-lock"></i> Code သက်တမ်းကုန်ချိန်တွင် အလိုအလျောက် logout ဖြစ်ပါမည်။</footer>
+    </section>
+  </main>
+  <script src="access.js?v=12"></script>
+</body>
+</html>

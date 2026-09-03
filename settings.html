@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <title>Settings • ANAWAR HEIN Football</title><script src="access-config.js?v=12"></script><script src="guard.js?v=11"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="settings.css"><link rel="stylesheet" href="version-credit.css"><link rel="stylesheet" href="access-extra.css"><link rel="stylesheet" href="fa-polish.css?v=15">
+<link rel="stylesheet" href="universe.css?v=1"></head>
+<body>
+  <main class="settings-app">
+    <header class="settings-top"><a class="icon-button" href="index.html" aria-label="Back"><i class="fa-solid fa-chevron-left"></i></a><div><small>ANAWAR HEIN FOOTBALL</small><h1>ဆက်တင်များ</h1></div><button id="reset" type="button">Reset</button></header>
+    <section class="settings-hero"><span><i class="fa-solid fa-sliders"></i></span><div><b>သင့်စိတ်ကြိုက်ပြင်ဆင်ပါ</b><p>Live scores နှင့် video player အလုပ်လုပ်ပုံကို ရွေးချယ်နိုင်ပါတယ်။</p></div></section>
+
+    <form id="settingsForm">
+      <section class="settings-group"><h2>Live Data</h2>
+        <label class="setting-row"><div><b>Auto Refresh</b><small>Match data ကို အလိုအလျောက် update လုပ်ပါ</small></div><input type="checkbox" id="autoRefresh"><i></i></label>
+        <label class="select-row"><div><b>Update Interval</b><small>API ပြန်ခေါ်မည့်အချိန်</small></div><select id="refreshInterval"><option value="15">15 seconds</option><option value="30">30 seconds</option><option value="60">1 minute</option></select></label>
+      </section>
+
+      <section class="settings-group"><h2>Video Player</h2>
+        <label class="setting-row"><div><b>Autoplay</b><small>Match ဖွင့်ချိန် video အလိုအလျောက်စပါ</small></div><input type="checkbox" id="autoplay"><i></i></label>
+      </section>
+
+      <section class="settings-group"><h2>Appearance</h2>
+        <div class="color-row"><div><b>Accent Color</b><small>Buttons နှင့် active tabs အရောင်</small></div><div class="colors"><button type="button" data-color="#258df2" style="--c:#258df2"></button><button type="button" data-color="#8b5cf6" style="--c:#8b5cf6"></button><button type="button" data-color="#16b87a" style="--c:#16b87a"></button><button type="button" data-color="#ef4444" style="--c:#ef4444"></button></div></div>
+      </section>
+      <section class="settings-group"><h2>Access</h2><button class="logout-button" id="logout" type="button">ထွက်မည် (Logout)</button></section>
+      <button class="save-button" type="submit">ဆက်တင်များ သိမ်းမည်</button>
+    </form>
+    <footer class="version-credit"><i class="fa-solid fa-code"></i><b>ANAWAR HEIN FOOTBALL V1.0</b><span>DEVELOPED BY CHAN NYEIN AUNG</span></footer>
+  </main>
+  <div class="saved" id="saved">သိမ်းပြီးပါပြီ <i class="fa-solid fa-check"></i></div><script src="settings.js"></script>
+</body>
+</html>
